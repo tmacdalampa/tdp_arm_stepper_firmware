@@ -36,9 +36,11 @@ class BigEasyDriver(object):
         self.isasleep = False
         self.isinreset = False
         self.microsteps_per_step = 16
+        
 
         # Motor information
         self.degrees_per_step = None
+        self.pulse_interval=None
 
 
     def begin(self):
@@ -150,9 +152,9 @@ class BigEasyDriver(object):
         least 1us high and 1us low.
         """
         GPIO.output(self.step_pin, GPIO.LOW)
-        sleep(10e-5)
+        sleep(self.pulse_interval)
         GPIO.output(self.step_pin, GPIO.HIGH)
-        sleep(10e-5)
+        sleep(self.pulse_interval)
         return True
 
 
