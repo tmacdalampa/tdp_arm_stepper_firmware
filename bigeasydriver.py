@@ -150,9 +150,9 @@ class BigEasyDriver(object):
         least 1us high and 1us low.
         """
         GPIO.output(self.step_pin, GPIO.LOW)
-        sleep(10e-4)
+        sleep(10e-5)
         GPIO.output(self.step_pin, GPIO.HIGH)
-        sleep(10e-4)
+        sleep(10e-5)
         return True
 
 
