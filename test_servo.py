@@ -16,22 +16,22 @@ def angle_to_duty_cycle(angle=0):
     return duty_cycle
  
 try:
-    print('«ö¤U Ctrl-C ¥i°±¤îµ{¦¡')
+    print('æŒ‰ä¸‹ Ctrl-C å¯åœæ­¢ç¨‹å¼')
     for angle in range(0, 181, STEP):
         dc = angle_to_duty_cycle(angle)
         pwm.ChangeDutyCycle(dc)
-        print('¨¤«×={: >3}, ¤u§@¶g´Á={:.2f}'.format(angle, dc))
+        print('è§’åº¦={: >3}, å·¥ä½œé€±æœŸ={:.2f}'.format(angle, dc))
         time.sleep(2)
     for angle in range(180, -1, -STEP):
         dc = angle_to_duty_cycle(angle)
-        print('¨¤«×={: >3}, ¤u§@¶g´Á={:.2f}'.format(angle, dc))
+        print('è§’åº¦={: >3}, å·¥ä½œé€±æœŸ={:.2f}'.format(angle, dc))
         pwm.ChangeDutyCycle(dc)
         time.sleep(2)
     pwm.ChangeDutyCycle(angle_to_duty_cycle(90))
     while True:
         next
 except KeyboardInterrupt:
-    print('Ãö³¬µ{¦¡')
+    print('é—œé–‰ç¨‹å¼')
 finally:
     pwm.stop()
     GPIO.cleanup()
