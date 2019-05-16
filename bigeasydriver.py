@@ -18,10 +18,10 @@ class BigEasyDriver(object):
     BED.
     """
 
-    def __init__(self):
+    def __init__(self, en_pin. ms1_pin):
         # Hardware pin connections
-        self.enable_pin = None
-        self.MS1_pin = None
+        self.enable_pin = en_pin
+        self.MS1_pin = MS1_pin
         self.MS2_pin = None
         self.MS3_pin = None
         self.reset_pin = None
