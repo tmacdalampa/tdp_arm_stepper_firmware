@@ -31,7 +31,7 @@ class BigEasyDriver(object):
 
         # Hardware state information
         self.enabled = True
-        self.direction = 'ccw'
+        #self.direction = 'ccw'
         self.step_size = 'sixteenth step'
         self.isasleep = False
         self.isinreset = False
