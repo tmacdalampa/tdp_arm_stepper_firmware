@@ -25,8 +25,8 @@ stepper.set_direction('ccw')
 stepper.set_stepsize('quarter step')
 
 #different degrees and different angle
-theta=[1, 5, 10, 45, 90]
-theta_j2=[j*20.72 for j in theta]
+theta=[1, 5, 10, 45,90]
+theta_j2=[j*5.18 for j in theta]
 for i in range(0,5):
   stepper.set_direction('cw')
   t0=time.time()
