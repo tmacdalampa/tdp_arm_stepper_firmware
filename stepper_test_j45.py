@@ -21,13 +21,13 @@ stepper.pulse_interval=10e-5
 
 import numpy as np
 
-stepper.set_direction('ccw')
+#stepper.set_direction('ccw')
 stepper.set_stepsize('sixteenth step')
 
 #different degrees and different angle
+
 theta=[1, -1, 5, -5, 10, -10, 45, -45, 90, -90, 180, -180]
 for i in range(0,12):
- # stepper.set_direction('ccw')
   t0=time.time()
   print(stepper.move_degrees(theta[i]))
   print (time.time()-t0, "seconds")

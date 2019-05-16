@@ -31,7 +31,7 @@ class BigEasyDriver(object):
 
         # Hardware state information
         self.enabled = True
-        self.direction = 'ccw'
+        #self.direction = 'ccw'
         self.step_size = 'sixteenth step'
         self.isasleep = False
         self.isinreset = False
@@ -125,23 +125,23 @@ class BigEasyDriver(object):
         return True
 
 
-    def set_direction(self, direction):
+#    def set_direction(self, direction):
         """
-        Set the direction of motor rotation.
+#        Set the direction of motor rotation.
 
         Input is tied high on the BED
        """
-        direction_pin_states = {'ccw': GPIO.HIGH,
-                                'cw': GPIO.LOW}
-        try:
-            direction_state = direction_pin_states[direction]
-            self.direction = direction
-        except KeyError:
-           raise ValueError('Unknown direction: {0}'.format(direction))
+#        direction_pin_states = {'ccw': GPIO.HIGH,
+ #                               'cw': GPIO.LOW}
+ #       try:
+ #           direction_state = direction_pin_states[direction]
+ #           self.direction = direction
+ #       except KeyError:
+ #          raise ValueError('Unknown direction: {0}'.format(direction))
 
         # Actually set the pin state
-       GPIO.output(self.direction_pin, direction_state)
-        return True
+#       GPIO.output(self.direction_pin, direction_state)
+ #       return True
 
 
     def step(self):
