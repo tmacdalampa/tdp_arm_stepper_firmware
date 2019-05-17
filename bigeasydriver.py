@@ -18,20 +18,20 @@ class BigEasyDriver(object):
     BED.
     """
 
-    def __init__(self, en_pin. ms1_pin):
+    def __init__(self, en_pin, ms1_pin, ms2_pin, ms3_pin, direction_pin, step_pin, degrees_per_step, pulse_interval):
         # Hardware pin connections
         self.enable_pin = en_pin
-        self.MS1_pin = MS1_pin
-        self.MS2_pin = None
-        self.MS3_pin = None
+        self.MS1_pin = ms1_pin
+        self.MS2_pin = ms2_pin
+        self.MS3_pin = ms3_pin
         self.reset_pin = None
         self.sleep_pin = None
-        self.step_pin = None
-        self.direction_pin = None
+        self.step_pin = step_pin
+        self.direction_pin = direction_pin
 
         # Hardware state information
         self.enabled = True
-        self.direction = 'ccw'
+        #self.direction = 'ccw'
         self.step_size = 'sixteenth step'
         self.isasleep = False
         self.isinreset = False
@@ -39,8 +39,8 @@ class BigEasyDriver(object):
         
 
         # Motor information
-        self.degrees_per_step = None
-        self.pulse_interval=None
+        self.degrees_per_step = degrees_per_step
+        self.pulse_interval=pulse_interval
 
 
     def begin(self):
@@ -125,23 +125,23 @@ class BigEasyDriver(object):
         return True
 
 
-    def set_direction(self, direction):
-        """
-        Set the direction of motor rotation.
+    #def set_direction(self, direction):
+    #   """
+    #    Set the direction of motor rotation.
 
-        Input is tied high on the BED
-        """
-        direction_pin_states = {'ccw': GPIO.HIGH,
-                                'cw': GPIO.LOW}
-        try:
-            direction_state = direction_pin_states[direction]
-            self.direction = direction
-        except KeyError:
-            raise ValueError('Unknown direction: {0}'.format(direction))
+    #    Input is tied high on the BED
+    #    """
+    #    direction_pin_states = {'ccw': GPIO.HIGH,
+    #                           'cw': GPIO.LOW}
+    #    try:
+    #        direction_state = direction_pin_states[direction]
+    #        self.direction = direction
+    #    except KeyError:
+    #        raise ValueError('Unknown direction: {0}'.format(direction))
 
         # Actually set the pin state
-        GPIO.output(self.direction_pin, direction_state)
-        return True
+    #    GPIO.output(self.direction_pin, direction_state)
+    #    return True
 
 
     def step(self):
@@ -170,6 +170,11 @@ class BigEasyDriver(object):
         return True
 
     def move_degrees(self, degrees, dynamic_stepsize=False):
+        if degrees>0:
+            GPIO.output(self.direction_pin, GPIO.HIGH)
+        else:
+            GPIO.output(self.direction_pin, GPIO.LOW)
+            degrees=abs(degrees)
         """
         Move the motor a specified number of degrees.
 
