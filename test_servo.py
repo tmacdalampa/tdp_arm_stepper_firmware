@@ -12,7 +12,7 @@ pwm = GPIO.PWM(CONTROL_PIN, PWM_FREQ)
 pwm.start(0)
  
 def angle_to_duty_cycle(angle=0):
-    duty_cycle = (0.05 * PWM_FREQ) + (0.19 * PWM_FREQ * angle / 180)
+    duty_cycle = (0.05 * PWM_FREQ) + (0.2 * PWM_FREQ * angle / 180)
     return duty_cycle
  
 try:
