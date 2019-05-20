@@ -27,7 +27,7 @@ try:
         print('角度={: >3}, 工作週期={:.2f}'.format(angle, dc))
         pwm.ChangeDutyCycle(dc)
         time.sleep(2)
-    pwm.ChangeDutyCycle(angle_to_duty_cycle(90))
+    pwm.ChangeDutyCycle(angle_to_duty_cycle(0))
     while True:
         next
 except KeyboardInterrupt:

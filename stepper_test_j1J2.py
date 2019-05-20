@@ -31,7 +31,7 @@ stepper2.set_stepsize('sixteenth step')
 theta=[5, -5, 10, -10, 45, -45, 90, -90, 180, -180]
 theta_j1=[j*2.95 for j in theta]
 theta_j2=[j*20.72 for j in theta]
-for i in range(0,7):
+for i in range(0,8):
   t0=time.time()
   print(stepper1.move_degrees(theta_j1[i]), stepper2.move_degrees(theta_j2[i]))
   #print (time.time()-t0, "seconds")
