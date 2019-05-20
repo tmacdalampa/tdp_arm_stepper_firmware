@@ -17,6 +17,7 @@ def angle_to_duty_cycle(angle=0):
  
 try:
     print('按下 Ctrl-C 可停止程式')
+    """
     for angle in range(0, 181, STEP):
         dc = angle_to_duty_cycle(angle)
         pwm.ChangeDutyCycle(dc)
@@ -27,7 +28,18 @@ try:
         print('角度={: >3}, 工作週期={:.2f}'.format(angle, dc))
         pwm.ChangeDutyCycle(dc)
         time.sleep(2)
+
+     """
     pwm.ChangeDutyCycle(angle_to_duty_cycle(0))
+    print('set to zero degree')
+    """
+    angle=[5, -5, 30, -30, 45, -45, 90, -90]
+    for i in range (0, 7):
+      dc=angle_to_duty_cycle(angle[i])
+      pwm.ChangeDutyCycle(dc)
+      print(angle[i])
+      time.sleep(2)
+"""
     while True:
         next
 except KeyboardInterrupt:

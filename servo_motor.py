@@ -13,6 +13,7 @@ class ServoMotor(object):
     def begin(self):
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.CONTROL_PIN, GPIO.OUT)
+        pwm = GPIO.PWM(self.CONTROL_PIN, self.PWM_FREQ)
 
     def angle_to_PWM(self, angle):
         pwm = GPIO.PWM(self.CONTROL_PIN, self.PWM_FREQ)
