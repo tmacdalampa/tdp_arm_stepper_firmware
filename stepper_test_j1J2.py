@@ -10,7 +10,7 @@ import time
 
 stepper1 = bigeasydriver.BigEasyDriver(en_pin=5, ms1_pin=6, ms2_pin=13, ms3_pin=19, direction_pin=26, step_pin=16, degrees_per_step = 1.8, pulse_interval=10e-5)
 stepper2 = bigeasydriver.BigEasyDriver(en_pin=5, ms1_pin=6, ms2_pin=13, ms3_pin=19, direction_pin=20, step_pin=21, degrees_per_step = 1.8, pulse_interval=10e-5)
-servo4=servo_motor.ServoMotor(control_pin=17, PWM_FREQ=50)
+servo4=servo_motor.ServoMotor(control_pin=17, pwm_freq=50)
 
 stepper1.begin()
 stepper2.begin()
