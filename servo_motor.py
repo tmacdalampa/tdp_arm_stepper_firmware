@@ -19,6 +19,6 @@ class ServoMotor(object):
         duty_cycle = (0.05 * self.PWM_FREQ) + (0.15 * self.PWM_FREQ * angle / 180)
         self.pwm.ChangeDutyCycle(duty_cycle)
         return True
-    def pwm_stop
+    def pwm_stop(self):
         self.pwm.stop()
         return True
