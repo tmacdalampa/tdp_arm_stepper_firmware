@@ -2,7 +2,7 @@
 # Distributed under the terms of the MIT License.
 import time
 from time import sleep
-
+import RPi.GPIO as GPIO
 import servo_motor
 
 servo4=servo_motor.ServoMotor(control_pin=17, pwm_freq=50)
@@ -11,15 +11,24 @@ pwm=GPIO.PWM(servo4.CONTROL_PIN, servo4.PWM_FREQ)
 pwm.start(0)
 
 import numpy as np
+try:
+  #pwm.ChangeDutyCycle(0)
+  #print('set to zero degree')
+  #sleep(1)
 
-theta=[5, -5, 10, -10, 45, -45, 90, -90, 180, -180]
-for i in range(0,8):
-  t0=time.time()
-  dc=servo4.angle_to_duty_cycle(theta[i])
-  pwm.ChangeDutyCycle(dc)
-  print(theta[i])
-  sleep(1)
-
-pwm.stop()
-GPIO.cleanup()
-servo4.disable()
+  theta=[0, 5, 10, 45, 90, 0]
+  for i in range(0,6):
+    t0=time.time()
+    dc=servo4.angle_to_duty_cycle(theta[i])
+    pwm.ChangeDutyCycle(dc)
+    print(theta[i])
+    sleep(1)
+     
+except KeyboardInterrupt:
+  print('close')
+finally:
+  print('finally')
+  #pwm.ChangeDutyCycle(0)
+  #print('set to zero at the end')
+  pwm.stop()
+  GPIO.cleanup()
