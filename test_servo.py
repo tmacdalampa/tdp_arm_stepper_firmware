@@ -13,6 +13,8 @@ pwm.start(0)
  
 def angle_to_duty_cycle(angle=0):
     duty_cycle = (0.05 * PWM_FREQ) + (0.2 * PWM_FREQ * angle / 180)
+    #pwm.ChangeDutyCycle(duty_cycle)
+    #dc=pwm.ChangeDutyCycle(duty_cycle)
     return duty_cycle
  
 try:
@@ -32,18 +34,20 @@ try:
      """
     pwm.ChangeDutyCycle(angle_to_duty_cycle(0))
     print('set to zero degree')
-    """
     angle=[5, -5, 30, -30, 45, -45, 90, -90]
     for i in range (0, 7):
       dc=angle_to_duty_cycle(angle[i])
       pwm.ChangeDutyCycle(dc)
       print(angle[i])
       time.sleep(2)
-"""
-    while True:
-        next
+    pwm.ChangeDutyCycle(angle_to_duty_cycle(0))
+    print('set to zero degree')
+
+    #while True:
+    #   next
 except KeyboardInterrupt:
     print('關閉程式')
 finally:
+    print('finally')
     pwm.stop()
     GPIO.cleanup()

@@ -3,18 +3,24 @@
 import time
 from time import sleep
 
+import RPi.GPIO as GPIO
 import servo_motor
 
 servo4=servo_motor.ServoMotor(control_pin=17, pwm_freq=50)
-
 servo4.begin()
+pwm=GPIO.PWM(servo4.CONTROL_PIN, servo4.PWM_FREQ)
+pwm.start(0)
+
 
 import numpy as np
 
 theta=[5, -5, 10, -10, 45, -45, 90, -90, 180, -180]
 for i in range(0,8):
   t0=time.time()
-  print(servo4.angle_to_PWM(theta[i]))
+  dc=servo4.angle_to_PWM(theta[i])
+  print(pwm.ChangeDutyCycle(dc))
   sleep(1)
 
+pwm.stop()
+GPIO.cleanup()
 servo4.disable()
