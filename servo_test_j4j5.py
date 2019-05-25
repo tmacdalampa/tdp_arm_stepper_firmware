@@ -7,8 +7,10 @@ import servo_motor
 
 servo4=servo_motor.ServoMotor(control_pin=17, pwm_freq=50)
 servo5=servo_motor.ServoMotor(control_pin=27, pwm_freq=50)
+servo6=servo_motor.ServoMotor(control_pin=22, pwm_freq=50)
 servo4.begin()
 servo5.begin()
+servo6.begin()
 #pwm=GPIO.PWM(servo4.CONTROL_PIN, servo4.PWM_FREQ)
 #pwm.start(0)
 
@@ -19,10 +21,11 @@ try:
   #sleep(1)
 
   theta=[0, 5, 10, 45, 90, 135, 180, 0]
-  for i in range(0,8):
+  for i in range(0,2):
     t0=time.time()
     servo4.angle_to_duty_cycle(theta[i])
     servo5.angle_to_duty_cycle(theta[i])
+    servo6.angle_to_duty_cycle(theta[i])
     print(theta[i])
     sleep(1)
      
@@ -34,4 +37,5 @@ finally:
   #print('set to zero at the end')
   servo4.pwm_stop
   servo5.pwm_stop
+  servo6.pwm_stop
   GPIO.cleanup()
