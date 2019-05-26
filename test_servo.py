@@ -34,8 +34,8 @@ try:
      """
     pwm.ChangeDutyCycle(angle_to_duty_cycle(0))
     print('set to zero degree')
-    angle=[5, -5, 30, -30, 45, -45, 90, -90]
-    for i in range (0, 7):
+    angle=[0, 5, -5, 30, -30, 45, -45, 90, -90, 0]
+    for i in range (0, 10):
       dc=angle_to_duty_cycle(angle[i])
       pwm.ChangeDutyCycle(dc)
       print(angle[i])
