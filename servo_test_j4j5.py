@@ -20,7 +20,7 @@ try:
   #print('set to zero degree')
   #sleep(1)
 
-  theta=[0, 5, 10, 45, 90, 135, 180, 0]
+  theta=[-90, -85, -80, -45, 0, 45, 90, -90]
   for i in range(0,8):
     t0=time.time()
     servo4.angle_to_duty_cycle(theta[i])
