@@ -17,6 +17,7 @@ stepper.step_pin = 16
 
 stepper.begin()
 stepper.degrees_per_step = 0.9
+stepper.pulse_interval=10e-5
 
 import numpy as np
 

@@ -17,12 +17,12 @@ stepper.step_pin = 16
 
 stepper.begin()
 stepper.degrees_per_step = 1.8
-stepper.pulse_interval=10e-4
+stepper.pulse_interval=10e-5
 
 import numpy as np
 
 stepper.set_direction('ccw')
-stepper.set_stepsize('quarter step')
+stepper.set_stepsize('sixteenth step')
 
 #different degrees and different angle
 theta=[1, 5, 10, 45, 90]
