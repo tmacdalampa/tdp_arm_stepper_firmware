@@ -29,18 +29,18 @@ stepper1.set_stepsize('sixteenth step')
 stepper2.set_stepsize('sixteenth step')
 stepper3.set_stepsize('sixteenth step')
 
-theta=[5, -5, 10, -10, 45, -45, 90, -90, 180, -180]
+theta=[5, -5, 10, -10, 30, -30, 45, -45, 180, -180]
 theta_j1=[j*2.95 for j in theta]
 theta_j2=[j*20.72 for j in theta]
-theta_j3=[j*5.18 for j in theta]
-angle=[0, 5, 10, 45, 90, 135, 180, 0]
+theta_j3=[j*-5.18 for j in theta]
+angle=[0, 30, -30, 45, -45, 0]
 
 try:
-  for i in range(0,8):
+  for i in range(0,4):
     t0=time.time()
     print(stepper1.move_degrees(theta_j1[i]),
-          stepper2.move_degrees(theta_j2[i]),
           stepper3.move_degrees(theta_j3[i]),
+          stepper2.move_degrees(theta_j2[i]),
           servo4.angle_to_duty_cycle(angle[i]),
           servo5.angle_to_duty_cycle(angle[i]),
           servo6.angle_to_duty_cycle(angle[i]))
