@@ -15,10 +15,9 @@ class ServoMotor(object):
         self.pwm=GPIO.PWM(self.CONTROL_PIN, self.PWM_FREQ)
         self.pwm.start(0)
     def angle_to_duty_cycle(self, angle):
-        angle=angle+90
-        duty_cycle = (0.05 * self.PWM_FREQ) + (0.15 * self.PWM_FREQ * angle / 180)
+        duty_cycle = (0.05 * self.PWM_FREQ) + (0.2 * self.PWM_FREQ * angle / 180)
         self.pwm.ChangeDutyCycle(duty_cycle)
-        return True
+        return angle
     def pwm_stop(self):
         self.pwm.stop()
         return True

@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import time
  
 CONTROL_PIN = 17
-PWM_FREQ = 50
+PWM_FREQ = 30
 STEP=15
  
 GPIO.setmode(GPIO.BCM)
@@ -34,19 +34,21 @@ try:
      """
     pwm.ChangeDutyCycle(angle_to_duty_cycle(0))
     print('set to zero degree')
-    angle=[0, 5, -5, 30, -30, 45, -45, 90, -90, 0]
-    for i in range (0, 10):
-      dc=angle_to_duty_cycle(angle[i])
+    angle=[0, 90, 180, 90, 0, 90, 180, 90, 0]
+    test_angle=[5,10,15,20,25,30,35,40,45,50,55,60]
+    for i in range (0, 8):
+      time0=time.time()
+      dc=angle_to_duty_cycle(test_angle[i])
       pwm.ChangeDutyCycle(dc)
-      print(angle[i])
-      time.sleep(2)
-    pwm.ChangeDutyCycle(angle_to_duty_cycle(0))
-    print('set to zero degree')
+      print(test_angle[i])
+      time.sleep(0.05)
+    #pwm.ChangeDutyCycle(angle_to_duty_cycle(0))
+    #print('set to zero degree')
 
     #while True:
     #   next
 except KeyboardInterrupt:
-    print('關閉程式')
+    print('Keyboardinterrupt關閉程式')
 finally:
     print('finally')
     pwm.stop()
