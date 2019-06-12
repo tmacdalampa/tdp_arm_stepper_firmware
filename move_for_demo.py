@@ -37,20 +37,20 @@ theta_j2=[j*30 for j in theta2]
 
 try:
   t0=time.time()
-  print(stepper2.move_degrees(-60*30))  #第二軸往下轉60
+  print(stepper2.move_degrees(-70*30))  #第二軸往下轉60
   sleep(2)
 
        
-  for pos in range(90, 150, 2):   #第三五軸往下轉60
+  for pos in range(90, 160, 2):   #第三五軸往下轉60
     servo3L.write(pos)
     servo3R.write(180-pos)
     servo5.write(180-pos)
     print('motor3 &5', pos)
     time.sleep(0.015)
-  sleep(0.5)
+  sleep(1)
 
   servo7.write(60) #夾具夾
-  sleep(0.5)
+  sleep(1)
 
   print(stepper2.move_degrees(30*30)) #第二軸稍微往上轉
   sleep(2)
@@ -64,7 +64,7 @@ try:
   servo7.write(0) #夾具放開
   sleep(1)
   
-  for pos in range(181, 90,-2):  #第三五軸轉回去
+  for pos in range(161, 90,-2):  #第三五軸轉回去
     servo3L.write(pos-1)
     servo3R.write(181-pos)
     servo5.write(181-pos)
@@ -72,7 +72,7 @@ try:
     time.sleep(0.015)
   sleep(2)
 
-  print(stepper2.move_degrees(60*30)) #第二軸轉回去
+  print(stepper2.move_degrees(70*30)) #第二軸轉回去
   sleep(2)
 
   print(stepper1.move_degrees(-90*2.95)) #第一軸轉回去
